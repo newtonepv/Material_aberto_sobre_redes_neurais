@@ -86,7 +86,6 @@ dogs_vs_cats_predicter.apply(init_weights)
 
 
 def trainModel(f, dl, num_ephocs=1):
-    dogs_vs_cats_predicter.to(device)
     optim = torch.optim.SGD(f.parameters(), lr = 0.007)
     error = torch.nn.CrossEntropyLoss()
 
