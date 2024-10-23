@@ -19,7 +19,7 @@ uma boa ordem seria:
  - Assitir o video: https://www.youtube.com/watch?v=I_uC4U_kavc
 
  - ler os mapas mentais em ordem:
-    https://lucid.app/lucidspark/1f8b320c-8114-4349-af78-05ec1cfd20be/edit?invitationId=inv_42e603f7-68e5-4d2d-86a3-e8d3326ae8b9&page=0_0#
+    https://lucid.app/lucidspark/1f8b320c-8114-4349-af78-05ec1cfd20be/view
 
 https://lucid.app/lucidspark/cbd1e0e0-43a7-4810-8b9a-b9566c6a480b/view
 
