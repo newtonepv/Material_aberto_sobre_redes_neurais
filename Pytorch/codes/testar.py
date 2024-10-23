@@ -1,6 +1,10 @@
-#usamos codigos prontos, explicação do porquê: 
+'''
+mapas mentais relacionados:
+https://lucid.app/lucidspark/1f8b320c-8114-4349-af78-05ec1cfd20be/edit?invitationId=inv_42e603f7-68e5-4d2d-86a3-e8d3326ae8b9&page=0_0
+https://lucid.app/lucidspark/f3e8ec48-df8b-4da1-be7c-dd8e545b22f0/edit?page=0_0&invitationId=inv_84dd43d5-dbbd-4d86-b0c4-aa655b29adef#
+'''
 
-import torch #essa biblioteca serve para
+import torch #essa biblioteca serve para criar e treinar a rede mais rapidamente, usando menos codigo
 import numpy as np
 import matplotlib.pyplot as plt
 from torchvision import datasets, transforms
@@ -10,30 +14,32 @@ from PIL import Image
 # Definições do dispositivo e dos caminhos das pastas (supondo que já estejam definidos)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-dogs_vs_cats_test = "../test1"
+dogs_vs_cats_test = "../dogs-vs-cats/test"#caminho para os arquivos de teste
 
 # Transforms e DataLoader
 transformations = transforms.Compose([
     transforms.Resize((128, 128)),
     transforms.ToTensor(), 
-    transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]) 
-])
+    transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]) #normaliza todos os itens do vetor dentre eles
+])# é uma classe que armazena as transformações para modificar uma imagem
 
 def pil_loader(path):
     with open(path, 'rb') as f:
         img = Image.open(f)
         return img.convert('RGB')
 
-test_dataset = datasets.ImageFolder(
+test_dataset = datasets.ImageFolder(#Classe que representa o dataset, usa a função pil loader para trazer como RGB
     dogs_vs_cats_test,
     transform=transformations,
     loader=pil_loader
 )
+
 test_loader = DataLoader(test_dataset, batch_size=1, shuffle=True)
+#classe dataloader, é usada para percorrer o dataset 
 
 # Definição do modelo
 class Dogs_vs_cats_predicter_untrained(torch.nn.Module):
-    def __init__(self):
+    def __init__(self):#nessa parte são definidas variáveis para representar cada camada, e função
         super().__init__()
         self.relu = torch.nn.ReLU()
         self.convo1 = torch.nn.Conv2d(in_channels=3, out_channels=32, kernel_size=3, padding=1, stride=1)
@@ -48,10 +54,10 @@ class Dogs_vs_cats_predicter_untrained(torch.nn.Module):
         self.conv_output_size = self._get_conv_output_size((128, 128))
         
 
-        self.linear1 = torch.nn.Linear(self.conv_output_size, 512, bias=True)
-        self.linear2 = torch.nn.Linear(512, 2, bias=True)
+        self.linear1 = torch.nn.Linear(self.conv_output_size, 512, bias=True) #uma matriz de dimensões self.conv_output_size x 512 com bias
+        self.linear2 = torch.nn.Linear(512, 2, bias=True) #uma matriz de dimensões 512 x 2 com bias
 
-        self.dropout = torch.nn.Dropout(p=0.15)
+        self.dropout = torch.nn.Dropout(p=0.15) #prevê overfitting
 
     def _get_conv_output_size(self, input_size):
         # Use a rede convolucional para calcular o tamanho da saída
@@ -68,10 +74,12 @@ class Dogs_vs_cats_predicter_untrained(torch.nn.Module):
         x = x.view(-1, self.conv_output_size)
         x = self.relu(self.linear1(x))
         x = self.linear2(x)
-        return x
+        return x #é definido como a variável passa pelas camadas até se tornar a saída
     
 dogs_vs_cats_predicter = Dogs_vs_cats_predicter_untrained()                                                                                                                                 
 state_dict = torch.load("dogs_vs_cats_model_trained2Times.pth")
+
+#plota os graficos
 
 # Carregar o state_dict no modelo
 dogs_vs_cats_predicter.load_state_dict(state_dict)
@@ -92,6 +100,7 @@ for i, (xs, _) in enumerate(test_loader):
     imagens.extend(xs.cpu())
     animal = "cachorro" if pred.item() == 1 else "gato"
     legendas.append(f"chute: {animal}")
+    
 
 # Crie uma grade de 4x5 (4 linhas e 5 colunas)
 fig, axes = plt.subplots(4, 5, figsize=(15, 12))
