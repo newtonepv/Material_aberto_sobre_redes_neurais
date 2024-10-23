@@ -27,6 +27,6 @@ https://lucid.app/lucidspark/cbd1e0e0-43a7-4810-8b9a-b9566c6a480b/view
 
  - ler o mapa mental:
 
-    https://lucid.app/lucidspark/f3e8ec48-df8b-4da1-be7c-dd8e545b22f0/edit?invitationId=inv_84dd43d5-dbbd-4d86-b0c4-aa655b29adef&page=0_0#
+    https://lucid.app/lucidspark/f3e8ec48-df8b-4da1-be7c-dd8e545b22f0/view
 
  - ler, e executar os codigos do repositório
