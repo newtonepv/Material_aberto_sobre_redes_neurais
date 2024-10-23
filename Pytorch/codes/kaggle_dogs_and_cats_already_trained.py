@@ -1,5 +1,6 @@
-#usamos codigos prontos para facilitar a parte 
-import torch #link do lucidchart
+#usamos codigos prontos, explicação do porquê: 
+
+import torch #essa biblioteca serve para
 import numpy as np
 import matplotlib.pyplot as plt
 from torchvision import datasets, transforms
@@ -9,9 +10,7 @@ from PIL import Image
 # Definições do dispositivo e dos caminhos das pastas (supondo que já estejam definidos)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-dogs_train_folder_path = "/home/edvsimoes/Downloads/dogs-vs-cats/train/dogs"
-cats_train_folder_path = "/home/edvsimoes/Downloads/dogs-vs-cats/train/cats"
-database_train_folder = "/home/edvsimoes/Downloads/dogs-vs-cats/train"
+dogs_vs_cats_test = "../test1"
 
 # Transforms e DataLoader
 transformations = transforms.Compose([
@@ -19,18 +18,18 @@ transformations = transforms.Compose([
     transforms.ToTensor(), 
     transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]) 
 ])
-'''
+
 def pil_loader(path):
     with open(path, 'rb') as f:
         img = Image.open(f)
-        return img.convert('RGB')'''
+        return img.convert('RGB')
 
-training_data_sets = datasets.ImageFolder(
-    database_train_folder,
+test_dataset = datasets.ImageFolder(
+    dogs_vs_cats_test,
     transform=transformations,
+    loader=pil_loader
 )
-
-training_data_loader = DataLoader(training_data_sets, batch_size=32, shuffle=True, num_workers=4)
+test_loader = DataLoader(test_dataset, batch_size=1, shuffle=True)
 
 # Definição do modelo
 class Dogs_vs_cats_predicter_untrained(torch.nn.Module):
@@ -52,7 +51,7 @@ class Dogs_vs_cats_predicter_untrained(torch.nn.Module):
         self.linear1 = torch.nn.Linear(self.conv_output_size, 512, bias=True)
         self.linear2 = torch.nn.Linear(512, 2, bias=True)
 
-        self.dropout = torch.nn.Dropout(p=0.1)
+        self.dropout = torch.nn.Dropout(p=0.15)
 
     def _get_conv_output_size(self, input_size):
         # Use a rede convolucional para calcular o tamanho da saída
@@ -70,61 +69,50 @@ class Dogs_vs_cats_predicter_untrained(torch.nn.Module):
         x = self.relu(self.linear1(x))
         x = self.linear2(x)
         return x
+    
+dogs_vs_cats_predicter = Dogs_vs_cats_predicter_untrained()                                                                                                                                 
+state_dict = torch.load("dogs_vs_cats_model_trained2Times.pth")
 
-# Teste do modelo
-data = iter(training_data_loader)
-xs, ys = next(data)
-print(xs.size())
+# Carregar o state_dict no modelo
+dogs_vs_cats_predicter.load_state_dict(state_dict)
+dogs_vs_cats_predicter.eval()
 
-dogs_vs_cats_predicter = Dogs_vs_cats_predicter_untrained()
+# Teste do modelo                                                                                                                                                                                                                                                                                                               
+imagens, legendas = [], []
+for i, (xs, _) in enumerate(test_loader):
+    if i >= 20:  # Mostrando apenas 20 imagens
+        break
 
-state = torch.load("dogs_vs_cats_model_trained2Times.pth", weights_only=True)
+    xs = xs.to(device)
 
-dogs_vs_cats_predicter.load_state_dict(state)
+    # Predição do modelo
+    pred = dogs_vs_cats_predicter(xs).argmax(axis=1)
 
-dogs_vs_cats_predicter.train()
+    # Armazena as imagens e as predições
+    imagens.extend(xs.cpu())
+    animal = "cachorro" if pred.item() == 1 else "gato"
+    legendas.append(f"chute: {animal}")
 
-def trainModel(f, dl, num_ephocs=1):
-    dogs_vs_cats_predicter.to(device)
-    optim = torch.optim.SGD(f.parameters(), lr = 0.007)
-    error = torch.nn.CrossEntropyLoss()
+# Crie uma grade de 4x5 (4 linhas e 5 colunas)
+fig, axes = plt.subplots(4, 5, figsize=(15, 12))
 
+# Itere sobre cada imagem e plote com a legenda correta
+for i, (img, ax) in enumerate(zip(imagens, axes.flatten())):
+    # Converta o tensor para numpy
+    img_np = img.squeeze(0).permute(1, 2, 0).numpy()  # Troca a ordem dos canais de [C, H, W] para [H, W, C]
+    
+    # Desnormaliza para o intervalo [0, 1]
+    img_np = 0.5 * img_np + 0.5  # Reverte a normalização
 
+    # Mostra a imagem
+    ax.imshow(img_np)
+    
+    # Adiciona legenda
+    ax.set_title(legendas[i])
+    
+    # Remove os eixos
+    ax.axis('off')
 
-    losses= []
-    ephocs= []
-    N = len(dl)
-    print(N)
-    for e in range(num_ephocs):
-        data = iter(dl)
-        print(f"Ephoc: {e}",flush=True)
-        for i in range(500):
-            x, y = next(data)
-            x, y = x.to(device), y.to(device)
-            print(i, end=" ",flush=True)
-            optim.zero_grad()
-            loss = error(f(x),y)
-            loss.backward()
-            optim.step()#litterally backporpagating
-
-            ephocs.append(e+i/N)
-            losses.append(loss.item())
-    return np.array(losses), np.array(ephocs)
-
-losses, ephocs = trainModel(dogs_vs_cats_predicter, training_data_loader, num_ephocs=3)
-
-plt.plot(ephocs, losses, label="erro")
-
-# Adicionando títulos e legendas
-plt.title("Gráfico do erro")
-plt.xlabel("x")
-plt.ylabel("y")
-
-# Exibir legenda
-plt.legend()
-
-# Exibindo o gráfico
+# Ajusta os espaçamentos
+plt.tight_layout()
 plt.show()
-
-
-torch.save(dogs_vs_cats_predicter.state_dict(), "dogs_vs_cats_model_trained2Times.pth")

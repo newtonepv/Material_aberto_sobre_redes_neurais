@@ -8,9 +8,9 @@ from PIL import Image
 # Definições do dispositivo e dos caminhos das pastas (supondo que já estejam definidos)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-dogs_train_folder_path = "/home/edvsimoes/Downloads/dogs-vs-cats/train/dogs"
-cats_train_folder_path = "/home/edvsimoes/Downloads/dogs-vs-cats/train/cats"
-database_train_folder = "/home/edvsimoes/Downloads/dogs-vs-cats/train"
+dogs_train_folder_path = "../dogs-vs-cats/train/dogs"
+cats_train_folder_path = "../dogs-vs-cats/train/cats"
+database_train_folder = "../dogs-vs-cats/train"
 
 # Transforms e DataLoader
 transformations = transforms.Compose([

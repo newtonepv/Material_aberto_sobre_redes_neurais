@@ -1,4 +1,6 @@
-import torch
+#usamos codigos prontos, explicação do porquê: 
+
+import torch #essa biblioteca serve para
 import numpy as np
 import matplotlib.pyplot as plt
 from torchvision import datasets, transforms
@@ -8,10 +10,7 @@ from PIL import Image
 # Definições do dispositivo e dos caminhos das pastas (supondo que já estejam definidos)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-dogs_train_folder_path = "/home/edvsimoes/Downloads/dogs-vs-cats/train/dogs"
-cats_train_folder_path = "/home/edvsimoes/Downloads/dogs-vs-cats/train/cats"
-database_train_folder = "/home/edvsimoes/Downloads/dogs-vs-cats/train"
-dogs_vs_cats_test = "/home/edvsimoes/Downloads/dogs-vs-cats/test1"
+dogs_vs_cats_test = "../dogs-vs-cats/test1"
 
 # Transforms e DataLoader
 transformations = transforms.Compose([
@@ -71,14 +70,14 @@ class Dogs_vs_cats_predicter_untrained(torch.nn.Module):
         x = self.linear2(x)
         return x
     
-dogs_vs_cats_predicter = Dogs_vs_cats_predicter_untrained()
+dogs_vs_cats_predicter = Dogs_vs_cats_predicter_untrained()                                                                                                                                 
 state_dict = torch.load("dogs_vs_cats_model_trained2Times.pth")
 
 # Carregar o state_dict no modelo
 dogs_vs_cats_predicter.load_state_dict(state_dict)
 dogs_vs_cats_predicter.eval()
 
-# Teste do modelo
+# Teste do modelo                                                                                                                                                                                                                                                                                                               
 imagens, legendas = [], []
 for i, (xs, _) in enumerate(test_loader):
     if i >= 20:  # Mostrando apenas 20 imagens
