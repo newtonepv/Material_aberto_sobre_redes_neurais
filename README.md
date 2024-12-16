@@ -1,31 +1,51 @@
-# 🌐 Redes Neurais Didáticas  
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
 
-Este repositório ensina **redes neurais** de forma simples, ideal para estudantes de graduação com dificuldades no tema. Usamos **mapas mentais**, **vídeos explicativos** e **códigos open-source** para facilitar o aprendizado.  
+  <h1>🌐 Redes Neurais Didáticas</h1>
 
----
+  <p>Este repositório ensina <strong>redes neurais</strong> de forma simples, ideal para estudantes de graduação com dificuldades no tema. Usamos <strong>mapas mentais</strong>, <strong>vídeos explicativos</strong> e <strong>códigos open-source</strong> para facilitar o aprendizado.</p>
 
-## 📂 Conteúdo  
-- **Mapas Mentais**: Visão geral de conceitos como perceptron, funções de ativação e pooling.  
-- **Vídeos**: Explicações curtas e didáticas sobre cada tópico.  
-- **Códigos Python**: Dois exemplos práticos:  
-  - **MLP (Multilayer Perceptron)**: Rede neural com backpropagation.  
-  - **CNN (Rede Neural Convolucional)**: Usando algoritmo evolutivo para otimizar a arquitetura.
+  <hr>
 
----
+  <h2>📂 Conteúdo</h2>
+  <ul>
+    <li><strong>Mapas Mentais</strong>: Visão geral de conceitos como perceptron, funções de ativação e pooling.</li>
+    <li><strong>Vídeos</strong>: Explicações curtas e didáticas sobre cada tópico.</li>
+    <li><strong>Códigos Python</strong>: Dois exemplos práticos:
+      <ul>
+        <li><strong>MLP (Multilayer Perceptron)</strong>: Rede neural com backpropagation.</li>
+        <li><strong>CNN (Rede Neural Convolucional)</strong>: Usando algoritmo evolutivo para otimizar a arquitetura.</li>
+      </ul>
+    </li>
+  </ul>
 
-# Aprenda redes neurais de forma fácil.
-uma boa ordem seria:
+  <hr>
 
+  <h2>Aprenda redes neurais de forma fácil.</h2>
+  <p>Uma boa ordem seria:</p>
+  <ul>
+    <li>ler o mapa mental: <a href="https://lucid.app/lucidspark/1f8b320c-8114-4349-af78-05ec1cfd20be/view">Mapa Mental 1</a></li>
+    <li>Assistir o vídeo: <a href="https://www.youtube.com/watch?v=s4gL__IgWiA">Vídeo Explicativo</a></li>
+    <li>ler o mapa mental: <a href="https://lucid.app/lucidspark/cbd1e0e0-43a7-4810-8b9a-b9566c6a480b/view">Mapa Mental 2</a></li>
+  </ul>
 
+  <hr>
 
- - ler o mapa mental: https://lucid.app/lucidspark/1f8b320c-8114-4349-af78-05ec1cfd20be/view
- - Assitir o video: [https://www.youtube.com/watch?v=I_uC4U_kavc](https://www.youtube.com/watch?v=s4gL__IgWiA)
- - ler o mapa mental: https://lucid.app/lucidspark/cbd1e0e0-43a7-4810-8b9a-b9566c6a480b/view
+  <h1 style="text-align: center;">Em desenvolvimento</h1>
 
- - ler e rodar o codigo em c xor_evolutivo.c
+  <hr>
 
- - ler o mapa mental:
+  <ul>
+    <li>ler e rodar o código em <strong>c xor_evolutivo.c</strong></li>
+    <li>ler o mapa mental: <a href="https://lucid.app/lucidspark/f3e8ec48-df8b-4da1-be7c-dd8e545b22f0/view">Mapa Mental 3</a></li>
+    <li>ler e executar os códigos do repositório</li>
+  </ul>
 
-    https://lucid.app/lucidspark/f3e8ec48-df8b-4da1-be7c-dd8e545b22f0/view
+</body>
+</html>
 
- - ler, e executar os codigos do repositório
