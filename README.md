@@ -13,17 +13,16 @@ Este repositório ensina **redes neurais** de forma simples, ideal para estudant
 
 ---
 
-**Aprenda redes neurais de forma fácil.
+# Aprenda redes neurais de forma fácil.
 uma boa ordem seria:
 
- - Assitir o video: https://www.youtube.com/watch?v=I_uC4U_kavc
 
- - ler os mapas mentais em ordem:
-    https://lucid.app/lucidspark/1f8b320c-8114-4349-af78-05ec1cfd20be/view
 
-https://lucid.app/lucidspark/cbd1e0e0-43a7-4810-8b9a-b9566c6a480b/view
+ - ler o mapa mental: https://lucid.app/lucidspark/1f8b320c-8114-4349-af78-05ec1cfd20be/view
+ - Assitir o video: [https://www.youtube.com/watch?v=I_uC4U_kavc](https://www.youtube.com/watch?v=s4gL__IgWiA)
+ - ler o mapa mental: https://lucid.app/lucidspark/cbd1e0e0-43a7-4810-8b9a-b9566c6a480b/view
 
- - ler e executar o codigo em c xor_evolutivo.c
+ - ler e rodar o codigo em c xor_evolutivo.c
 
  - ler o mapa mental:
 
