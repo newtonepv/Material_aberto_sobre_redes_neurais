@@ -26,7 +26,7 @@
 
   <hr>
 
-  <h2>Aprenda redes neurais de forma fácil.</h2>
+  <h2>✍️Mãos à obra.</h2>
   <p>Uma boa ordem seria:</p>
   <ul>
     <li>ler o mapa mental: <a href="https://lucid.app/lucidspark/1f8b320c-8114-4349-af78-05ec1cfd20be/view">Mapa Mental 1</a></li>
