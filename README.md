@@ -36,15 +36,6 @@
 
   <hr>
 
-  <h1 style="text-align: center;">Em desenvolvimento</h1>
-
-  <hr>
-
-  <ul>
-    <li>ler e rodar o código em <strong>c xor_evolutivo.c</strong></li>
-    <li>ler o mapa mental: <a href="https://lucid.app/lucidspark/f3e8ec48-df8b-4da1-be7c-dd8e545b22f0/view">Mapa Mental 3</a></li>
-    <li>ler e executar os códigos do repositório</li>
-  </ul>
 
 </body>
 </html>
