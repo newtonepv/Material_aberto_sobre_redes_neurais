@@ -6,7 +6,7 @@
 </head>
 <body>
 
-  <h1>🌐 Redes Neurais Didáticas</h1>
+  <h1>🌐 Redes Neurais Drdáticamente</h1>
 
   <p>Este repositório ensina <strong>redes neurais</strong> de forma simples, ideal para estudantes de graduação com dificuldades no tema. Usamos <strong>mapas mentais</strong>, <strong>vídeos explicativos</strong> e <strong>códigos open-source</strong> para facilitar o aprendizado.</p>
 
@@ -30,7 +30,7 @@
   <p>Uma boa ordem seria:</p>
   <ul>
     <li>ler o mapa mental: <a href="https://lucid.app/lucidspark/1f8b320c-8114-4349-af78-05ec1cfd20be/view">Mapa Mental 1</a></li>
-    <li>Assistir o vídeo: <a href="https://www.youtube.com/watch?v=s4gL__IgWiA">Vídeo Explicativo</a></li>
+    <li>Assistir o vídeo: <a href="[https://www.youtube.com/watch?v=s4gL__IgWiA](https://youtu.be/XkVEJbehCIA?si=XTyKQYvaO-94Ze49)">Programando Autograd</a></li>
     <li>ler o mapa mental: <a href="https://lucid.app/lucidspark/cbd1e0e0-43a7-4810-8b9a-b9566c6a480b/view">Mapa Mental 2</a></li>
   </ul>
 
