@@ -30,7 +30,7 @@
   <p>Uma boa ordem seria:</p>
   <ul>
     <li>ler o mapa mental: <a href="https://lucid.app/lucidspark/1f8b320c-8114-4349-af78-05ec1cfd20be/view">Mapa Mental 1</a></li>
-    <li>Assistir o vídeo: <a href="https://youtu.be/XkVEJbehCIA?si=xzHVZ_Pks_F-Og9g">Programando Autograd</a></li>
+    <li>Assistir o vídeo: <a href="https://youtu.be/XkVEJbehCIA?si=xzHVZ_Pks_F-Og9g">Programando autograd</a></li>
     <li>ler o mapa mental: <a href="https://lucid.app/lucidspark/cbd1e0e0-43a7-4810-8b9a-b9566c6a480b/view">Mapa Mental 2</a></li>
   </ul>
 
